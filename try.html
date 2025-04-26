@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Motorcycle Parts - SMDI MotoHub</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50">
+
+  <!-- Navbar -->
+  <nav class="bg-blue-900 text-white">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <div class="bg-white rounded-full w-8 h-8 flex items-center justify-center">
+          <span class="text-blue-900 font-bold">O</span>
+        </div>
+        <span class="font-bold text-lg">SMDI MotoHub</span>
+      </div>
+      <div class="hidden md:flex gap-6">
+        <a href="#" class="hover:underline">Home</a>
+        <a href="#" class="hover:underline">Parts Catalog</a>
+        <a href="#" class="hover:underline">Services</a>
+        <a href="#" class="hover:underline">Track Repair</a>
+      </div>
+      <button class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200">Book Service</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="container mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold">Motorcycle Parts</h1>
+    <p class="text-gray-600 mt-2">Browse our extensive collection of genuine Suzuki parts.</p>
+  </section>
+
+  <!-- Parts Catalog -->
+  <section class="container mx-auto px-4 pb-16">
+    <h2 class="text-2xl font-bold mb-6">Parts Catalog</h2>
+
+    <!-- Search and Filters -->
+    <div class="flex flex-col md:flex-row justify-between gap-4 mb-6">
+      <input type="text" placeholder="Search parts..." class="w-full border rounded px-4 py-2">
+      <div class="flex flex-wrap gap-2">
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">All</button>
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">Engine</button>
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">Brakes</button>
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">Electrical</button>
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">Suspension</button>
+        <button class="px-4 py-2 bg-blue-50 text-blue-900 rounded hover:bg-blue-100">Maintenance</button>
+      </div>
+    </div>
+
+    <!-- Parts Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      <!-- Part Card -->
+      <div class="bg-white rounded shadow p-4">
+        <div class="w-full h-40 bg-gray-200 flex items-center justify-center mb-4">
+          <span class="text-gray-400">Image</span>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <h3 class="font-bold">Air Filter</h3>
+          <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded">In Stock</span>
+        </div>
+        <p class="text-gray-600 text-sm mb-2">Genuine Suzuki air filter for optimal engine performance.</p>
+        <p class="font-bold mb-4">₱550</p>
+        <button class="w-full bg-blue-900 text-white py-2 rounded hover:bg-blue-800">Add to Inquiry</button>
+      </div>
+
+      <!-- Repeat other product cards similarly -->
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-900 text-white py-10">
+    <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-6">
+
+      <div>
+        <h4 class="font-bold mb-4">SMDI MotoHub</h4>
+        <p class="text-sm">Your trusted hub for motorcycle parts sales, maintenance, and repair services in San Jose, Antique.</p>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="#" class="hover:underline">Home</a></li>
+          <li><a href="#" class="hover:underline">Parts Catalog</a></li>
+          <li><a href="#" class="hover:underline">Services</a></li>
+          <li><a href="#" class="hover:underline">Track Repair</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Services</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Motorcycle Maintenance</li>
+          <li>Parts Replacement</li>
+          <li>Engine Tuning</li>
+          <li>Motorcycle Restoration</li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <ul class="space-y-2 text-sm">
+          <li>Suzuki SMDI 3S</li>
+          <li>San Jose, Antique</li>
+          <li>Phone: (123) 456-7890</li>
+          <li>Email: info@smdimotohub.com</li>
+        </ul>
+      </div>
+
+    </div>
+    <div class="text-center text-gray-500 text-xs mt-10">© 2025 SMDI MotoHub. All rights reserved.</div>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Track Your Repair - SMDI MotoHub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Additional internal styling for better control */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <!-- Navbar -->
+    <header class="bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto flex justify-between items-center p-4">
+            <div class="text-xl font-bold">SMDI MotoHub</div>
+            <nav class="space-x-6 hidden md:block">
+                <a href="#" class="hover:underline">Home</a>
+                <a href="#" class="hover:underline">Parts Catalog</a>
+                <a href="#" class="hover:underline">Services</a>
+                <a href="#" class="hover:underline">Track Repair</a>
+                <button class="ml-4 bg-white text-blue-900 font-semibold py-1 px-3 rounded hover:bg-gray-200">Book Service</button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section -->
+    <main class="flex-grow">
+        <section class="max-w-4xl mx-auto mt-10 p-6 bg-white rounded-lg shadow">
+            <h1 class="text-3xl font-bold mb-4 text-center">Track Your Repair</h1>
+            <p class="text-center text-gray-600 mb-6">Check the status of your motorcycle service or repair.</p>
+
+            <!-- Repair Tracking Form -->
+            <div class="mb-8">
+                <label class="block mb-2 text-sm font-medium text-gray-700">Repair Tracking</label>
+                <input id="jobNumber" type="text" placeholder="e.g., SMDI-2023-1234" class="w-full border-gray-300 rounded p-2 mb-4 focus:ring-blue-500 focus:border-blue-500" />
+                <button onclick="trackRepair()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Track</button>
+                <p class="text-gray-500 text-sm mt-2">Tip: For demo purposes, use "SMDI-2023-1234" as the job number.</p>
+            </div>
+
+            <!-- Repair Status (Hidden Initially) -->
+            <div id="repairStatus" class="hidden mt-10">
+                <div class="bg-white border rounded-lg p-6 shadow-md mb-6">
+                    <h2 class="text-xl font-semibold mb-4">Repair Status</h2>
+                    <div class="mb-4">
+                        <div class="flex justify-between items-center mb-2">
+                            <span>Progress</span>
+                            <span class="text-blue-600 font-semibold">In Progress (65%)</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-3">
+                            <div class="bg-blue-600 h-3 rounded-full" style="width: 65%;"></div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4 text-sm text-gray-700">
+                        <div><strong>Customer:</strong> Juan Dela Cruz</div>
+                        <div><strong>Motorcycle:</strong> Suzuki Raider R150</div>
+                        <div><strong>Plate Number:</strong> ABC 123</div>
+                        <div><strong>Assigned Technician:</strong> Miguel Santos</div>
+                        <div><strong>Date Received:</strong> 4/20/2025</div>
+                        <div><strong>Estimated Completion:</strong> 4/25/2025</div>
+                    </div>
+                </div>
+
+                <!-- Service Timeline -->
+                <div class="bg-white border rounded-lg p-6 shadow-md">
+                    <h2 class="text-xl font-semibold mb-4">Service Timeline</h2>
+                    <ol class="relative border-l border-gray-300">
+                        <li class="mb-10 ml-6">
+                            <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-8 ring-white text-white">1</span>
+                            <h3 class="font-semibold">Motorcycle received for service</h3>
+                            <p class="text-sm text-gray-500">Initial inspection completed</p>
+                            <p class="text-xs text-gray-400">2025-04-20 at 9:30 AM</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-8 ring-white text-white">2</span>
+                            <h3 class="font-semibold">Diagnosis completed</h3>
+                            <p class="text-sm text-gray-500">Faulty ignition coil identified, parts ordered</p>
+                            <p class="text-xs text-gray-400">2025-04-21 at 11:45 AM</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-8 ring-white text-white">3</span>
+                            <h3 class="font-semibold">Parts arrived</h3>
+                            <p class="text-sm text-gray-500">Replacement parts received and verified</p>
+                            <p class="text-xs text-gray-400">2025-04-22 at 2:15 PM</p>
+                        </li>
+                        <li class="mb-10 ml-6">
+                            <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-blue-600 rounded-full ring-8 ring-white text-white">4</span>
+                            <h3 class="font-semibold">Repair in progress</h3>
+                            <p class="text-sm text-gray-500">Ignition system being replaced</p>
+                            <p class="text-xs text-gray-400">2025-04-23 at 10:00 AM</p>
+                        </li>
+                        <li class="ml-6">
+                            <span class="absolute -left-3 flex items-center justify-center w-6 h-6 bg-gray-300 rounded-full ring-8 ring-white text-white">5</span>
+                            <h3 class="font-semibold text-gray-400">Next: Quality Check</h3>
+                            <p class="text-sm text-gray-400">Final testing and quality assurance</p>
+                            <p class="text-xs text-gray-400">Pending</p>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-gray-300 text-sm py-6 mt-10">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 px-4">
+            <div>
+                <h4 class="font-bold text-white mb-2">SMDI MotoHub</h4>
+                <p>Your trusted hub for motorcycle parts sales, maintenance, and repair services in San Jose, Antique.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Quick Links</h4>
+                <ul>
+                    <li><a href="#" class="hover:underline">Home</a></li>
+                    <li><a href="#" class="hover:underline">Parts Catalog</a></li>
+                    <li><a href="#" class="hover:underline">Services</a></li>
+                    <li><a href="#" class="hover:underline">Track Repair</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white mb-2">Contact</h4>
+                <p>Suzuki SMDI 3S<br>San Jose, Antique</p>
+                <p>Phone: (123) 456-7890</p>
+                <p>Email: info@smdimotohub.com</p>
+            </div>
+        </div>
+        <div class="text-center mt-6">
+            © 2025 SMDI MotoHub. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript to handle tracking -->
+    <script>
+        function trackRepair() {
+            const jobNumber = document.getElementById('jobNumber').value.trim();
+            const repairSection = document.getElementById('repairStatus');
+            if (jobNumber === "SMDI-2023-1234") {
+                repairSection.classList.remove('hidden');
+                repairSection.scrollIntoView({ behavior: 'smooth' });
+            } else {
+                alert("Job number not found. Please try again.");
+                repairSection.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

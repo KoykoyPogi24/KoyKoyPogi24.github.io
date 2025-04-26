@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SMDI MotoHub - Parts Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Internal CSS */
+    .hover-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+<!-- Navbar -->
+<nav class="bg-blue-900 p-4 flex justify-between items-center">
+  <div class="text-white font-bold text-lg">SMDI MotoHub</div>
+  <ul class="flex gap-6 text-white">
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Parts Catalog</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Track Repair</a></li>
+  </ul>
+  <button class="bg-white text-blue-900 px-4 py-2 rounded hover:bg-gray-200">Book Service</button>
+</nav>
+
+<!-- Header -->
+<section class="p-10">
+  <h1 class="text-3xl font-bold mb-2">Motorcycle Parts</h1>
+  <p class="text-gray-600">Browse our extensive collection of genuine Suzuki parts.</p>
+</section>
+
+<!-- Search and Filters -->
+<section class="px-10">
+  <div class="mb-6">
+    <input id="searchInput" type="text" placeholder="Search parts..." class="w-full p-3 border rounded">
+  </div>
+  <div class="flex gap-4 mb-6">
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="All">All</button>
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="Engine">Engine</button>
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="Brakes">Brakes</button>
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="Electrical">Electrical</button>
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="Suspension">Suspension</button>
+    <button class="filter-btn bg-blue-100 px-4 py-2 rounded" data-category="Maintenance">Maintenance</button>
+  </div>
+
+  <!-- Parts Grid -->
+  <div id="productsGrid" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Dynamic Products Here -->
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-blue-900 text-white p-10 mt-10">
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <div>
+      <h3 class="font-bold mb-2">SMDI MotoHub</h3>
+      <p>Your trusted hub for motorcycle parts, maintenance, and services.</p>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Parts Catalog</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Track Repair</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Services</h3>
+      <ul>
+        <li>Motorcycle Maintenance</li>
+        <li>Parts Replacement</li>
+        <li>Engine Tuning</li>
+        <li>Motorcycle Restoration</li>
+      </ul>
+    </div>
+    <div>
+      <h3 class="font-bold mb-2">Contact</h3>
+      <p>San Jose, Antique<br>Phone: (123) 456-7890<br>Email: info@smdimotohub.com</p>
+    </div>
+  </div>
+  <p class="mt-8 text-center">&copy; 2025 SMDI MotoHub. All rights reserved.</p>
+</footer>
+
+<!-- JS for dynamic products -->
+<script>
+const products = [
+  { name: "Air Filter", price: 550, stock: "In Stock", category: "Engine" },
+  { name: "Brake Pads (Front)", price: 850, stock: "In Stock", category: "Brakes" },
+  { name: "Engine Oil Filter", price: 350, stock: "Low Stock", category: "Engine" },
+  { name: "Chain Lubricant", price: 280, stock: "In Stock", category: "Maintenance" },
+  { name: "Rear Shock Absorber", price: 2800, stock: "In Stock", category: "Suspension" },
+  { name: "Head Gasket", price: 450, stock: "Out of Stock", category: "Engine" },
+  { name: "Spark Plug", price: 180, stock: "In Stock", category: "Engine" },
+  { name: "Brake Fluid", price: 320, stock: "In Stock", category: "Brakes" }
+];
+
+const productsGrid = document.getElementById('productsGrid');
+const searchInput = document.getElementById('searchInput');
+const filterButtons = document.querySelectorAll('.filter-btn');
+
+function renderProducts(filter = "All", search = "") {
+  productsGrid.innerHTML = "";
+  let filtered = products.filter(p => 
+    (filter === "All" || p.category === filter) && 
+    p.name.toLowerCase().includes(search.toLowerCase())
+  );
+
+  filtered.forEach(product => {
+    productsGrid.innerHTML += `
+      <div class="bg-white p-6 rounded hover-card">
+        <div class="bg-gray-200 h-32 mb-4 flex items-center justify-center">IMG</div>
+        <h4 class="font-bold mb-1">${product.name}</h4>
+        <p class="text-gray-600 mb-2">\u20B1${product.price}</p>
+        <span class="inline-block px-2 py-1 text-xs rounded-full mb-4 ${
+          product.stock === 'In Stock' ? 'bg-green-200 text-green-800' :
+          product.stock === 'Low Stock' ? 'bg-yellow-200 text-yellow-800' :
+          'bg-red-200 text-red-800'}">${product.stock}</span>
+        <button class="w-full bg-blue-900 text-white py-2 rounded hover:bg-blue-700 ${product.stock === 'Out of Stock' ? 'opacity-50 cursor-not-allowed' : ''}" ${product.stock === 'Out of Stock' ? 'disabled' : ''}>
+          ${product.stock === 'Out of Stock' ? 'Unavailable' : 'Add to Inquiry'}
+        </button>
+      </div>
+    `;
+  });
+}
+
+// Event listeners
+searchInput.addEventListener('input', () => {
+  renderProducts(currentFilter, searchInput.value);
+});
+
+let currentFilter = "All";
+filterButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    currentFilter = btn.getAttribute('data-category');
+    renderProducts(currentFilter, searchInput.value);
+  });
+});
+
+renderProducts();
+</script>
+
+</body>
+</html>
